@@ -49,31 +49,6 @@ struct convert<geometry_msgs::Vector3>
 };
 
 template<>
-struct convert<geometry_msgs::Point>
-{
-  static Node encode(const geometry_msgs::Point& rhs)
-  {
-    Node node;
-    node["x"] = rhs.x;
-    node["y"] = rhs.y;
-    node["z"] = rhs.z;
-    return node;
-  }
-
-  static bool decode(const Node& node, geometry_msgs::Point& rhs)
-  {
-    if (node.size() != 3) return false;
-
-    rhs.x = node["x"].as<double>();
-    rhs.y = node["y"].as<double>();
-    rhs.z = node["z"].as<double>();
-    
-    return true;
-  }
-};
-
-
-template<>
 struct convert<geometry_msgs::Quaternion>
 {
   static Node encode(const geometry_msgs::Quaternion& rhs)
